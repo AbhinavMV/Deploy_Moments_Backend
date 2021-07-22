@@ -1,0 +1,21 @@
+type User implements Timestamps {
+  id: ID!
+  name: String!
+  username: String!
+  email: String!
+  password: String
+  posts: [Post]!
+  friends: [User]!
+  token: String
+  latestMessage: [Message]!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+input UserCreateInput {
+  name: String!
+  username: String!
+  email: String!
+  password: String!
+  confirmPassword: String!
+}

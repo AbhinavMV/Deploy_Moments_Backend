@@ -1,0 +1,38 @@
+scalar Date
+scalar Upload
+
+type File {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  path: String!
+}
+
+type Query {
+  posts(params: QueryParams): Posts!
+  post(id: ID!): Post
+
+  getMessages(friendId: ID!): [Message]!
+  getSomeMessages(friendId: ID!, params: QueryParams): Messages!
+
+  users(name: String): [User]!
+  getUserDetails(id: ID!): User!
+
+  login(email: String!, password: String!): User
+}
+
+type Mutation {
+  createPost(post: PostCreateInput!): Post!
+  # updatePost(post: PostUpdateInput!): Post!
+  likePost(id: ID!): Post
+  deletePost(id: ID!): Post
+
+  createUser(user: UserCreateInput!): User!
+
+  addFriend(friendId: ID!): User!
+  sendMessage(to: ID!, content: String!): Message!
+}
+
+type Subscription {
+  messageCreated: Message
+}
