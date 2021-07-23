@@ -4,19 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js",
     "clean": "rm -rf build && mkdir build",
-    "dev": "nodemon ./index.js --exec babel-node",
+    "build-server": "babel -d ./build ./server -s",
+    "build": "npm run clean && npm run build-server && cp -avr ./src/graphql/typedefs ./build/graphql/",
+    "start": "node ./build/index.js",
+    "serve": "node ./build/index.js",
+    "dev": "nodemon ./server/index.js --exec babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.14.8",
     "@babel/core": "^7.14.8",
     "@babel/node": "^7.14.7",
-    "@babel/preset-env": "^7.14.7",
-    "babel-cli": "^6.26.0",
+    "@babel/preset-env": "^7.14.8",
     "nodemon": "^2.0.9"
   },
   "dependencies": {
