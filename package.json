@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build && mkdir build",
     "build-server": "babel -d ./build ./server -s",
-    "build": "npm run clean && npm run build-server && cp -avr ./src/graphql/typedefs ./build/graphql/",
+    "build": "npm run clean && npm run build-server && cp -avr ./server/graphql/typedefs ./build/graphql/",
     "start": "node ./build/index.js",
     "serve": "node ./build/index.js",
     "dev": "nodemon ./server/index.js --exec babel-node",
